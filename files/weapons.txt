@@ -1,0 +1,12 @@
+assault rifle
+battle rifle
+multiple barrel firearm
+pistol
+revolver
+submachine gun
+carbine
+shotgun
+sniper rifle
+machine gun
+recoilless rifle
+grenade launcher

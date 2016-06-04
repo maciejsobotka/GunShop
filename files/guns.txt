@@ -1,0 +1,73 @@
+Benelli MP 95E		
+Beretta M9
+Beretta 21A
+Beretta 70
+Beretta 87	
+Dan Wesson M1911
+Desert Eagle
+FEG PA-63
+Fort 12
+Fort-17
+Glock 17
+Glock 19
+Glock 20
+Glock 21
+Glock 22
+Glock 23
+Glock 24
+Glock 25
+Glock 26
+Glock 27
+Glock 28
+Glock 29
+Glock 30
+Glock 31
+Glock 32
+Glock 33
+Glock 34
+Glock 35
+Glock 36
+Glock 37
+Glock 38
+Glock 39
+Jericho 941
+P-64
+P-83
+P-96
+Remington 1911 R1
+Remington Model 51
+Remington R51
+Remington XP-100
+Ruger LCP	Sturm
+Ruger LC9	Sturm
+Ruger MP9	Sturm
+Sauer 38H
+SIG P210
+SIG P220
+SIG P239
+SIG P226
+SIG P250
+SIG P227
+SIG P228
+SIG P229
+Smith & Wesson Model 422
+Smith & Wesson M&P
+Smith & Wesson Model 1006
+Smith & Wesson SW1911
+Walther Model 9	
+Walther P5
+Walther P22
+Walther P38
+Walther P88
+M3 submachine gun
+M49 Submachine gun
+M56 Submachine gun
+MAS-38
+MAT-49
+SIG MKMS
+Smith & Wesson M76
+Walther MP
+ZB-47
+Colt SCAMP
+MAC-10
+MAC-11

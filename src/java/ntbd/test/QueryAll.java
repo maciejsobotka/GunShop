@@ -50,22 +50,29 @@ public class QueryAll {
       System.out.println(mw);
     }
 
+    System.out.println("[Accessories]");
+    Extent<Accessory> extent3 = pm.getExtent(Accessory.class,false);
+    for (Iterator<Accessory> i = extent3.iterator(); i.hasNext();) {
+    	Accessory accs = i.next();
+      System.out.println(accs);
+    }
+    
     System.out.println("[Addresses]");
-    Extent<Address> extent3 = pm.getExtent(Address.class,false);
-    for (Iterator<Address> i = extent3.iterator(); i.hasNext();) {
+    Extent<Address> extent4 = pm.getExtent(Address.class,false);
+    for (Iterator<Address> i = extent4.iterator(); i.hasNext();) {
 	  Address addr = i.next();
       System.out.println(addr);
     }
 
     System.out.println("[Invoices]");
-    Extent<Invoice> extent4 = pm.getExtent(Invoice.class,false);
-    for (Iterator<Invoice> i = extent4.iterator(); i.hasNext();) {
+    Extent<Invoice> extent5 = pm.getExtent(Invoice.class,false);
+    for (Iterator<Invoice> i = extent5.iterator(); i.hasNext();) {
     	Invoice inv = i.next();
       System.out.println(inv);
     }
     System.out.println("[Clients]");
-    Extent<Client> extent5 = pm.getExtent(Client.class,true);
-    for (Iterator<Client> i = extent5.iterator(); i.hasNext();) {
+    Extent<Client> extent6 = pm.getExtent(Client.class,true);
+    for (Iterator<Client> i = extent6.iterator(); i.hasNext();) {
     	Client cli = i.next();
       System.out.println(cli);
     }
