@@ -224,19 +224,28 @@ public class CreateDb {
 			farms[i].setBarrelLength(rnd.nextInt(30)+5);
 			objects.add (farms[i]);
 		}
+		int xx = 0;
 		for(int i=0; i<farms.length; ++i)
 		{
 			HashSet<Accessory> hs = new HashSet<Accessory>();
-			hs.add(accs[i]);
-			hs.add(accs[n*2+i]);
-			hs.add(accs[n*4+i]);
+			if(i%2==0){
+				hs.add(accs[i+xx]);
+				hs.add(accs[i+xx+1]);
+				hs.add(accs[i+xx+2]);
+				hs.add(accs[i+xx+3]);
+				xx+=3;
+			}else{
+				hs.add(accs[i+xx]);
+				hs.add(accs[i+xx+1]);
+				xx+=1;
+			}
 			farms[i].setAccessories(hs);
 		}
 		for(int i=0 ; i<invcs.length; ++i)
 		{
 			HashSet<Weapon> hs = new HashSet<Weapon>();
 			HashSet<Accessory> hs2 = new HashSet<Accessory>();
-			int x = rnd.nextInt(5) + 1;
+			int x = rnd.nextInt(5);
 			for(int j = 0; j < x; ++j){
 				if(rnd.nextInt(2)==0){
 					int l = rnd.nextInt(mweaps.length);
@@ -246,7 +255,7 @@ public class CreateDb {
 					hs.add(farms[l]);
 				}
 			}
-			x = rnd.nextInt(5) + 1;
+			x = rnd.nextInt(5);
 			for(int j = 0; j < x; ++j){
 				int l = rnd.nextInt(accs.length);
 				hs2.add(accs[l]);

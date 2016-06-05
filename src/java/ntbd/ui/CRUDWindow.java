@@ -36,7 +36,7 @@ import ntbd.utils.InvoicesInCity;
 
 import javax.swing.JComboBox;
 
-public class MainWindow {
+public class CRUDWindow {
 
 	private JFrame frmGunShop;
 	private JTextField textField;
@@ -53,7 +53,7 @@ public class MainWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainWindow window = new MainWindow();
+					CRUDWindow window = new CRUDWindow();
 					window.frmGunShop.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +66,7 @@ public class MainWindow {
 	 * Create the application.
 	 * @throws IOException 
 	 */
-	public MainWindow() throws IOException {
+	public CRUDWindow() throws IOException {
 		pm = getPM();
 		cities = new HashSet<String>();
 		Query<Client> q = pm.newQuery(Client.class);
@@ -235,4 +235,3 @@ public class MainWindow {
 
 	  }
 }
-
