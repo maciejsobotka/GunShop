@@ -12,7 +12,11 @@ public class MeleeWeapon extends Weapon{
 	}
 	
 	public String toString() {
-		return " [Weapon] " + name + " " + code + " " + type;
+		return " [MeleeWeapon] " + name + " "
+				+ code + " "
+				+ type + " "
+				+ bladeLength + " "
+				+ addDate;
 	}
 
 }

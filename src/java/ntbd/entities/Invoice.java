@@ -8,7 +8,6 @@ public class Invoice {
 	private Date date;
 	private Date dueDate;
 	private Client client;
-	private Address address;
 	private Set<Weapon> weapons;
 	private Set<Accessory> accessories;
 	
@@ -36,12 +35,6 @@ public class Invoice {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 	public Set<Weapon> getWeapons() {
 		return weapons;
 	}
@@ -56,6 +49,8 @@ public class Invoice {
 	}
 	
 	public String toString() {
-		return " [Invoice] " + cost;
+		return " [Invoice] " + cost + " "
+							+ date + " "
+							+ dueDate;
 	}
 }

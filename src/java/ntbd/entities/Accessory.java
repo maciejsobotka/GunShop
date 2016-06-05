@@ -7,7 +7,7 @@ public class Accessory {
 	private String name;
 	private String code;
 	private Date addDate;
-	private Weapon weapon;
+	private Firearm weapon;
 	private Set<Invoice> invoices;
 	
 	public String getName() {
@@ -28,10 +28,10 @@ public class Accessory {
 	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
-	public Weapon getWeapon() {
+	public Firearm getWeapon() {
 		return weapon;
 	}
-	public void setWeapon(Weapon weapon) {
+	public void setWeapon(Firearm weapon) {
 		this.weapon = weapon;
 	}
 	public Set<Invoice> getInvoices() {
@@ -42,6 +42,6 @@ public class Accessory {
 	}
 	
 	public String toString() {
-		return " [Accessory] " + name + " " + code;
+		return " [Accessory] " + name + " " + code + " " + addDate;
 	}
 }

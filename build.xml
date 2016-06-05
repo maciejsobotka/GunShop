@@ -174,4 +174,9 @@ tutorial build
     <target name="query" description="Create objects">
         <java classname="ntbd.test.QueryAll" classpathref="lib.classpath" fork="true"/>
 	</target>
+	
+	<!-- MainWindow -->
+    <target name="main" description="Main window">
+        <java classname="ntbd.ui.MainWindow" classpathref="lib.classpath" fork="true"/>
+	</target>
 </project>

@@ -10,10 +10,6 @@
             	    <column name="WEAPON_TYPE"/>
         	</discriminator>
 	    </inheritance>
-            <field name="accessories" persistence-modifier="persistent" >
-            	<collection element-type="ntbd.entities.Accessory"/>
-            	<join/>
-            </field>
             <field name="invoices" persistence-modifier="persistent" mapped-by="weapons">
             	<collection element-type="ntbd.entities.Invoice"/>
             </field>
@@ -23,16 +19,19 @@
         </class>
         <class name="Firearm" identity-type="datastore">
         	 <inheritance strategy="superclass-table"/>
+             <field name="accessories" persistence-modifier="persistent" table="WEAPON_ACCESSORIES">
+            	<collection element-type="ntbd.entities.Accessory"/>
+            	<join/>
+            </field>
         </class>
         <class name="Accessory" identity-type="datastore">
-            <field name="weapon" persistence-modifier="persistent"/>
+            <field name="weapon" persistence-modifier="persistent" mapped-by="accessories"/>
             <field name="invoices" persistence-modifier="persistent" mapped-by="accessories">
             	<collection element-type="ntbd.entities.Invoice"/>
             </field>
         </class>
         <class name="Invoice" identity-type="datastore">
-            <field name="client" persistence-modifier="persistent"/>
-            <field name="address" persistence-modifier="persistent"/>
+            <field name="client" persistence-modifier="persistent" mapped-by="invoices"/>
             <field name="weapons" persistence-modifier="persistent" table="INVOICES_WEAPONS">
                 <collection element-type="ntbd.entities.Weapon"/>
                 <join>
@@ -53,10 +52,13 @@
             </field>
         </class>
         <class name="Client" identity-type="datastore">
+        	<field name="invoices" persistence-modifier="persistent" table="CLIENT_INVOICES">
+        		<collection element-type="ntbd.entities.Invoice"/>
+        		<join/>
+            </field>
             <field name="address" persistence-modifier="persistent"/>
         </class>
         <class name="Address" identity-type="datastore">
-            <field name="invoice" persistence-modifier="persistent" mapped-by="address"/>
             <field name="client" persistence-modifier="persistent" mapped-by="address"/>
         </class>
     </package>

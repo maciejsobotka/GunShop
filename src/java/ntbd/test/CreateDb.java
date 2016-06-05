@@ -5,6 +5,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
@@ -64,7 +65,6 @@ public class CreateDb {
 		for (Iterator<?> i = res2.iterator(); i.hasNext();) {
 			Invoice d = (Invoice)(i.next());
 			d.setAccessories(null);
-			d.setAddress(null);
 			d.setClient(null);
 			d.setWeapons(null);
 		}
@@ -89,7 +89,6 @@ public class CreateDb {
 		Collection<?> res5 = (Collection<?>) q.execute();
 		for (Iterator<?> i = res5.iterator(); i.hasNext();) {
 			MeleeWeapon d = (MeleeWeapon)(i.next());
-			d.setAccessories(null);
 			d.setInvoices(null);
 		}
 		
@@ -117,7 +116,7 @@ public class CreateDb {
 		List<String> cities = Files.readAllLines(Paths.get("files", "cities.txt"));
 		List<String> streets = Files.readAllLines(Paths.get("files", "streets.txt"));
 		List<String> postcodes = Files.readAllLines(Paths.get("files", "stateCode.txt"));
-		Address[] addresses = new Address[n*5];
+		Address[] addresses = new Address[n*2];
 		for(int i=0 ; i<addresses.length; ++i)
 		{
 			addresses[i] = new Address();
@@ -156,7 +155,7 @@ public class CreateDb {
 			ar3[i]=i;
 		shuffleArray(ar3);
 		
-	  	Accessory[] accs = new Accessory[n*4];
+	  	Accessory[] accs = new Accessory[n*6];
 	  	for(int i=0; i<accs.length; ++i)
 	  	{
 	  		accs[i] = new Accessory();
@@ -170,7 +169,7 @@ public class CreateDb {
 	  		objects.add(accs[i]);
 	  	}
 		 
-		Invoice[] invcs = new Invoice[n*3];
+		Invoice[] invcs = new Invoice[n*6];
 		for(int i=0 ; i<invcs.length; ++i)
 		{
 			invcs[i] = new Invoice();
@@ -205,19 +204,12 @@ public class CreateDb {
 			mweaps[i].setAddDate(c.getTime());
 			mweaps[i].setBladeLength(rnd.nextInt(50)+5);
 			objects.add (mweaps[i]);
-			/*
-			int x = rnd.nextInt(5) + 1;
-			for(int j = 0; j < x; ++j){
-				int l = rnd.nextInt(projs.length);
-				empls[i].getProjects().add(projs[l]);
-			}
-			*/
 		}
 		
 		List<String> firearms = Files.readAllLines(Paths.get("files", "guns.txt"));
 		List<String> wtypes = Files.readAllLines(Paths.get("files", "weapons.txt"));
 		
-		Firearm[] farms = new Firearm[n*3];
+		Firearm[] farms = new Firearm[n*2];
 		for(int i=0; i<farms.length; ++i)
 		{
 			farms[i] = new Firearm();
@@ -231,6 +223,44 @@ public class CreateDb {
 			farms[i].setAddDate(c.getTime());
 			farms[i].setBarrelLength(rnd.nextInt(30)+5);
 			objects.add (farms[i]);
+		}
+		for(int i=0; i<farms.length; ++i)
+		{
+			HashSet<Accessory> hs = new HashSet<Accessory>();
+			hs.add(accs[i]);
+			hs.add(accs[n*2+i]);
+			hs.add(accs[n*4+i]);
+			farms[i].setAccessories(hs);
+		}
+		for(int i=0 ; i<invcs.length; ++i)
+		{
+			HashSet<Weapon> hs = new HashSet<Weapon>();
+			HashSet<Accessory> hs2 = new HashSet<Accessory>();
+			int x = rnd.nextInt(5) + 1;
+			for(int j = 0; j < x; ++j){
+				if(rnd.nextInt(2)==0){
+					int l = rnd.nextInt(mweaps.length);
+					hs.add(mweaps[l]);
+				}else{
+					int l = rnd.nextInt(farms.length);
+					hs.add(farms[l]);
+				}
+			}
+			x = rnd.nextInt(5) + 1;
+			for(int j = 0; j < x; ++j){
+				int l = rnd.nextInt(accs.length);
+				hs2.add(accs[l]);
+			}
+			invcs[i].setWeapons(hs);
+			invcs[i].setAccessories(hs2);
+		}
+		for(int i=0 ; i<clients.length; ++i)
+		{
+			HashSet<Invoice> hs = new HashSet<Invoice>();
+			hs.add(invcs[i]);
+			hs.add(invcs[n*2+i]);
+			hs.add(invcs[n*4+i]);
+			clients[i].setInvoices(hs);
 		}
 		pm.makePersistentAll (objects);
 		System.out.println ("Created " + objects.size () + " new objects.");

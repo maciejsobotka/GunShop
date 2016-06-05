@@ -3,12 +3,11 @@ package ntbd.entities;
 import java.util.Date;
 import java.util.Set;
 
-public class Weapon {
+public abstract class Weapon {
 	protected String name;
 	protected String code;
 	protected String type;
 	protected Date addDate;
-	protected Set<Accessory> accessories;
 	protected Set<Invoice> invoices;
 	
 	public String getName() {
@@ -35,12 +34,6 @@ public class Weapon {
 	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
-	public Set<Accessory> getAccessories() {
-		return accessories;
-	}
-	public void setAccessories(Set<Accessory> accessories) {
-		this.accessories = accessories;
-	}
 	public Set<Invoice> getInvoices() {
 		return invoices;
 	}
@@ -49,6 +42,6 @@ public class Weapon {
 	}
 	
 	public String toString() {
-		return " [Weapon] " + name + " " + code + " " + type;
+		return " [Weapon] " + name + " " + code + " " + type + " " + addDate;
 	}
 }
