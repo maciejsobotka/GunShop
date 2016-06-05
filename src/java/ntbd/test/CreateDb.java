@@ -195,7 +195,7 @@ public class CreateDb {
 			mweaps[i] = new MeleeWeapon();
 			String weap = mweapons.get(rnd.nextInt(mweapons.size()));
 			mweaps[i].setName(weap);
-			mweaps[i].setCode(codes.get(ar3[accs.length+1]));
+			mweaps[i].setCode(codes.get(ar3[accs.length+i]));
 			mweaps[i].setType(weap);
 			int y = rnd.nextInt(10) + 1995;
 			int m = rnd.nextInt(12) + 1;
@@ -214,7 +214,7 @@ public class CreateDb {
 		{
 			farms[i] = new Firearm();
 			farms[i].setName(firearms.get(rnd.nextInt(firearms.size())));
-			farms[i].setCode(codes.get(ar3[accs.length+mweaps.length+1]));
+			farms[i].setCode(codes.get(ar3[accs.length+mweaps.length+i]));
 			farms[i].setType(wtypes.get(rnd.nextInt(wtypes.size())));
 			int y = rnd.nextInt(10) + 1995;
 			int m = rnd.nextInt(12) + 1;

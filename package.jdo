@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE jdo PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN"
+    "http://java.sun.com/dtd/jdo_2_0.dtd">
+<jdo>
+    <package name="ntbd.entities">
+        <class name="Weapon" identity-type="datastore">
+    	    <inheritance strategy="subclass-table"/>
+            <field name="invoices" persistence-modifier="persistent" mapped-by="weapons">
+            	<collection element-type="ntbd.entities.Invoice"/>
+            </field>
+        </class>
+        <class name="MeleeWeapon" identity-type="datastore">
+        	 <inheritance strategy="new-table"/>
+        </class>
+        <class name="Firearm" identity-type="datastore">
+        	 <inheritance strategy="new-table"/>
+             <field name="accessories" persistence-modifier="persistent" table="WEAPON_ACCESSORIES">
+            	<collection element-type="ntbd.entities.Accessory"/>
+            	<join/>
+            </field>
+        </class>
+        <class name="Accessory" identity-type="datastore">
+            <field name="weapon" persistence-modifier="persistent" mapped-by="accessories"/>
+            <field name="invoices" persistence-modifier="persistent" mapped-by="accessories">
+            	<collection element-type="ntbd.entities.Invoice"/>
+            </field>
+        </class>
+        <class name="Invoice" identity-type="datastore">
+            <field name="client" persistence-modifier="persistent" mapped-by="invoices"/>
+            <field name="weapons" persistence-modifier="persistent" table="INVOICES_WEAPONS">
+                <collection element-type="ntbd.entities.Weapon"/>
+                <join>
+                	<column name="INVOICE_ID"/>
+            	</join>
+            	<element>
+                	<column name="WEAPON_ID"/>
+            	</element>
+            </field>
+            <field name="accessories" persistence-modifier="persistent" table="INVOICES_ACCESSORIES">
+                <collection element-type="ntbd.entities.Accessory"/>
+                <join>
+                	<column name="INVOICE_ID"/>
+            	</join>
+            	<element>
+                	<column name="ACCESSORY_ID"/>
+            	</element>
+            </field>
+        </class>
+        <class name="Client" identity-type="datastore">
+        	<field name="invoices" persistence-modifier="persistent" table="CLIENT_INVOICES">
+        		<collection element-type="ntbd.entities.Invoice"/>
+        		<join/>
+            </field>
+            <field name="address" persistence-modifier="persistent"/>
+        </class>
+        <class name="Address" identity-type="datastore">
+            <field name="client" persistence-modifier="persistent" mapped-by="address"/>
+        </class>
+    </package>
+</jdo>
