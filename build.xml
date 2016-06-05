@@ -179,4 +179,9 @@ tutorial build
     <target name="main" description="Main window">
         <java classname="ntbd.ui.MainWindow" classpathref="lib.classpath" fork="true"/>
 	</target>
+	
+		<!-- CRUDWindow -->
+    <target name="crud" description="Main window">
+        <java classname="ntbd.ui.CRUDWindow" classpathref="lib.classpath" fork="true"/>
+	</target>
 </project>
