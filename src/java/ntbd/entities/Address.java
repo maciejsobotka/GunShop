@@ -4,7 +4,6 @@ public class Address {
 	private String city;
 	private String street;
 	private String postcode;
-	private Invoice invoice;
 	private Client client;
 	
 	public String getCity() {
@@ -29,14 +28,6 @@ public class Address {
 	
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
-	}
-	
-	public Invoice getInvoice() {
-		return invoice;
-	}
-
-	public void setInvoice(Invoice invoice) {
-		this.invoice = invoice;
 	}
 	
 	public Client getClient() {

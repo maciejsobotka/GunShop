@@ -82,7 +82,6 @@ public class CreateDb {
 		for (Iterator<?> i = res4.iterator(); i.hasNext();) {
 			Address d = (Address)(i.next());
 		  d.setClient(null);
-		  d.setInvoice(null);
 		}
 		
 		q = pm.newQuery(MeleeWeapon.class);
